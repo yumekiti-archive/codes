@@ -2,11 +2,19 @@ version: '3.9'
 
 services:
   nvim:
-    image: mashmb/nvim:dev
+    build:
+      context: .
+      dockerfile: ./dockerfile
+      args:
+        UID: $UID
+        GID: $GID
+        UNAME: $UNAME
     deploy:
       replicas: 1
       resources:
         limits:
           memory: 2G
     volumes:
-      - ../workspace:/root/workspace
+      - ../workspace/:/home/$UNAME/workspace/
+    tty: true
+    working_dir: /home/$UNAME/workspace/
