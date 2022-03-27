@@ -12,3 +12,5 @@ services:
       - 8080:8080
     volumes:
       - ../:/home/$UNAME/codes
+      - ~/.vscode-server/extensions:/home/coder/.local/share/code-server/extensions
+      # - ~/.vscode/extensions:/home/coder/.local/share/code-server/extensions

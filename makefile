@@ -10,3 +10,16 @@ up:
 .PHONY: down
 down:
 	$(dc) down
+
+.PHONY: restart
+restart:
+	@make down
+	@make up
+
+.PHONY: code
+code:
+	$(dc) exec code /bin/bash
+
+.PHONY: extension
+extension:
+	bash ./docker/extension.sh
