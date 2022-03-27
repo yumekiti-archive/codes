@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+
+  code:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+      args:
+        UID: $UID
+        GID: $GID
+        UNAME: $UNAME
+    restart: unless-stopped
+    environment:
+      PASSWORD: "password"
+    ports:
+      - 8080:8080
+    volumes:
+      - ../:/home/$UNAME/codes

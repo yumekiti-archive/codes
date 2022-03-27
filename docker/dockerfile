@@ -1,0 +1,12 @@
+from codercom/code-server
+
+arg UID
+arg GID
+arg UNAME
+
+env UID ${UID}
+env GID ${GID}
+env UNAME ${UNAME}
+
+run groupadd -g ${GID} ${UNAME}
+run useradd -u ${UID} -g ${UNAME} ${UNAME}
