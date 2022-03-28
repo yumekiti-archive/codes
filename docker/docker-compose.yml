@@ -3,14 +3,18 @@ version: "3.9"
 services:
 
   code:
-    image: codercom/code-server
-    user: $user
+    build:
+      context: .
+      dockerfile: ./dockerfile
+      args:
+        UNAME: $UNAME
     restart: unless-stopped
+    working_dir: /codes
     environment:
       PASSWORD: "password"
     ports:
-      - 8080:8080
+      - 1234:8080
     volumes:
-      - ../:/home/$UNAME/codes
-      - ~/.vscode-server/extensions:/home/coder/.local/share/code-server/extensions
-      # - ~/.vscode/extensions:/home/coder/.local/share/code-server/extensions
+      - ../:/codes
+      - ~/.vscode-server/extensions:/home/$UNAME/.local/share/code-server/extensions
+      # - ~/.vscode/extensions:/home/$UNAME/.local/share/code-server/extensions

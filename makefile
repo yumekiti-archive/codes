@@ -1,7 +1,5 @@
-UID := $(shell id -u)
-GID := $(shell id -g)
-USER := $(UID):$(GID)
-dc := user=$(USER) docker compose -f ./docker/docker-compose.yml
+UNAME := $(shell whoami)
+dc := UNAME=$(UNAME) docker compose -f ./docker/docker-compose.yml
 
 .PHONY: up
 up:
@@ -15,6 +13,10 @@ down:
 restart:
 	@make down
 	@make up
+
+.PHONY: logs
+logs:
+	$(dc) logs
 
 .PHONY: code
 code:

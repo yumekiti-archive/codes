@@ -1,0 +1,11 @@
+from codercom/code-server
+
+arg UNAME
+env UNAME ${UNAME}
+
+user root
+
+run usermod -l $UNAME coder && \
+  groupmod -n $UNAME coder
+
+user $UNAME
