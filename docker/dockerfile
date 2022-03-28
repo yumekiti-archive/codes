@@ -8,4 +8,6 @@ user root
 run usermod -l $UNAME coder && \
   groupmod -n $UNAME coder
 
+run echo "${UNAME}    ALL=(ALL)   NOPASSWD:    ALL" >> /etc/sudoers.d/${UNAME}
+
 user $UNAME
