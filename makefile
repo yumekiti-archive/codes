@@ -4,6 +4,7 @@ dc := UNAME=$(UNAME) docker compose -f ./docker/docker-compose.yml
 .PHONY: up
 up:
 	$(dc) up -d --build
+	$(dc) exec code sudo chown -R $(UNAME):$(UNAME) /home/coder/
 
 .PHONY: down
 down:
