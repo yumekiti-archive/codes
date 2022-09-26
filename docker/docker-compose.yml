@@ -18,3 +18,4 @@ services:
       - ../:/codes
       - ~/.vscode-server/extensions:/home/coder/.local/share/code-server/extensions
       # - ~/.vscode/extensions:/home/coder/.local/share/code-server/extensions
+      - ~/.ssh/:/home/coder/.ssh
